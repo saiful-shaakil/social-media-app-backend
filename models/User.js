@@ -9,6 +9,12 @@ const UserSchema = new mongoose.Schema(
       max: 20,
       unique: true,
     },
+    fullName: {
+      type: String,
+      required: true,
+      min: 5,
+      max: 20,
+    },
     email: {
       type: String,
       required: true,
@@ -33,6 +39,18 @@ const UserSchema = new mongoose.Schema(
       default: [],
     },
     followings: {
+      type: Array,
+      default: [],
+    },
+    sentRequest: {
+      type: String,
+      default: "",
+    },
+    requestList: {
+      type: Array,
+      default: [],
+    },
+    friendsList: {
       type: Array,
       default: [],
     },
