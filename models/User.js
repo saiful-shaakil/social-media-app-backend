@@ -4,16 +4,16 @@ const UserSchema = new mongoose.Schema(
   {
     username: {
       type: String,
-      required: true,
       min: 3,
       max: 20,
       unique: true,
+      default: "",
     },
     fullName: {
       type: String,
-      required: true,
       min: 5,
       max: 20,
+      default: "",
     },
     email: {
       type: String,
@@ -33,6 +33,10 @@ const UserSchema = new mongoose.Schema(
     coverPicture: {
       type: String,
       default: "",
+    },
+    posts: {
+      type: Array,
+      default: [],
     },
     followers: {
       type: Array,
@@ -61,17 +65,21 @@ const UserSchema = new mongoose.Schema(
     bio: {
       type: String,
       max: 50,
+      default: "",
     },
     city: {
       type: String,
       max: 50,
+      default: "",
     },
     from: {
       type: String,
       max: 50,
+      default: "",
     },
   },
-  { timestamps: true }
+  { timestamps: true },
+  { collection: "users" }
 );
 
 module.exports = mongoose.model("User", UserSchema);
