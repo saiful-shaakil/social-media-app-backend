@@ -1,30 +1,28 @@
-const mongoose = required("mongoose");
+const mongoose = require("mongoose");
 
+// username: {
+//   type: String,
+//   min: 3,
+//   max: 20,
+//   unique: true,
+//   default: "",
+// },
 const UserSchema = new mongoose.Schema(
   {
-    username: {
+    email: {
       type: String,
-      min: 3,
-      max: 20,
+      max: 50,
       unique: true,
-      default: "",
+    },
+    password: {
+      type: String,
+      min: 6,
     },
     fullName: {
       type: String,
       min: 5,
       max: 20,
       default: "",
-    },
-    email: {
-      type: String,
-      required: true,
-      max: 50,
-      unique: true,
-    },
-    password: {
-      type: String,
-      required: true,
-      min: 6,
     },
     profilePicture: {
       type: String,
@@ -57,10 +55,6 @@ const UserSchema = new mongoose.Schema(
     friendsList: {
       type: Array,
       default: [],
-    },
-    isAdmin: {
-      type: Boolean,
-      default: false,
     },
     bio: {
       type: String,

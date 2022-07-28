@@ -5,6 +5,7 @@ var jwt = require("jsonwebtoken");
 const helmet = require("helmet");
 const cors = require("cors");
 require("dotenv").config();
+const user = require("./routes/user");
 
 //PORT
 const PORT = process.env.PORT || 5000;
@@ -27,6 +28,10 @@ mongoose.connect(
   }
 );
 
+//calling user routes
+app.use("/user", user);
+
+//home page of the backend
 app.get("/", (req, res) => {
   res.send("App is running successfully.");
 });
